@@ -24,6 +24,7 @@ interface Route {
     la  aplicacion resuelve la carga lenta.
 
     el comentario antes del import, le indica a webpack que cambie el nombre de los chunks
+    
 */
 const Lazy1 = lazy(() => import(/*webpackChunkName: "LazyPage1" */ '../01-lazyload/pages/LazyPage1'));
 const Lazy2 = lazy(() => import(/*webpackChunkName: "LazyPage2" */ '../01-lazyload/pages/LazyPage2'));
