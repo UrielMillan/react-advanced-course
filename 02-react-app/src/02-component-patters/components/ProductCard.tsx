@@ -7,14 +7,14 @@ import styles from '../styles/styles.module.css';
 export const productContext = createContext({} as ProductContexProps);
 const { Provider } = productContext;
 
-export const ProductCard = ({ children, product }: Props)  => {
+export const ProductCard = ({ children, product, className, style }: Props)  => {
 
     //Usamos el hook de los productos para manejar la cantidad y los botones de mas y menos
     //pasamos las propiedades del producto y las del hook al provedor
     const { counter, increaseBy } = useProduct();
     return (
         <Provider value={{ counter, increaseBy, product }}>
-            <div className={styles.productCard}>
+            <div className={`${styles.productCard} ${className}`} style={style}>
                 {children}
             </div>
         </Provider>
