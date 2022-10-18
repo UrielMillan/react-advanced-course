@@ -1,6 +1,5 @@
-import { Suspense } from "react";
 import { BrowserRouter, Routes, NavLink, Route, Navigate } from "react-router-dom"
-import { routes } from "./routes";
+import ShoppingPage from "../02-component-patters/pages/ShoppingPage";
 import logo from '../logo.svg';
 
 export default function Navigation() {
@@ -12,39 +11,38 @@ export default function Navigation() {
         espera a que el componente se cargue y en tiempo de espera renderiza un componente de fallback
     */
     return (
-        
-        <Suspense fallback={<span>Loading....</span>}>
-            <BrowserRouter>
-                <div className="main-layout">
-                    <nav>
-                        <img src={logo} alt="Logo de react" />
-                        <ul>
-                            {
-                                routes.map(({ to, name }) => (
-                                    <li key={to}>
-                                        <NavLink to={to} className={({ isActive }) => isLinkActive(isActive)} >
-                                            {name}
-                                        </NavLink>
-                                    </li>
-                                ))
-                            }
-                        </ul>
-                    </nav>
 
-                    <Routes>
-                        {
-                            routes.map(({ path, Component, to }) => (
-                                <Route path={path} element={<Component />} key={to} />
-                            ))
-                        }
-                        {/*
-                        Este componente de ruta es un comodin pues cuando se navegue a una ruta que no exita Navigate lo redirige al home
-                        y con la propiedad replace no permite que el usuario regrese
-                    */}
-                        <Route path="/*" element={<Navigate to={routes[0].to} replace />} />
-                    </Routes>
-                </div>
-            </BrowserRouter>
-        </Suspense>
+        <BrowserRouter>
+            <div className="main-layout">
+                <nav>
+                    <img src={logo} alt="Logo de react" />
+                    <ul>
+                        <li>
+                            <NavLink to="home" className={({ isActive }) => isLinkActive(isActive)} >
+                               Home
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="about" className={({ isActive }) => isLinkActive(isActive)} >
+                               About
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="users" className={({ isActive }) => isLinkActive(isActive)} >
+                               Users
+                            </NavLink>
+                        </li>
+                    </ul>
+                </nav>
+
+                <Routes>
+
+                    <Route path="/home" element={<ShoppingPage/>} />
+                    <Route path="/about" element={<h1>About</h1>} />
+                    <Route path="/users" element={<h1>Users</h1>} />
+                    <Route path="/*" element={<Navigate to="/home" replace />} />
+                </Routes>
+            </div>
+        </BrowserRouter>
     )
 }
