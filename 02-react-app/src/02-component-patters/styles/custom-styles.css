@@ -1,20 +1,25 @@
-.bg-dark{
-    background-color:rgb(56, 56, 56) ;
+.bg-dark {
+    background-color: rgb(56, 56, 56);
 }
 
-.text-white{
+.text-white {
     color: white
 }
 
-.custom-image{
+.custom-image {
     border-radius: 20px;
     padding: 10px;
     width: calc(100% - 20px);
 }
 
 .custom-buttons button,
-.custom-buttons div
- {
+.custom-buttons div {
     color: white;
     border-color: white;
+}
+
+.shopping-cart{
+    position: fixed;
+    top: 0;
+    right: 10px;
 }

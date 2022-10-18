@@ -6,6 +6,8 @@ export interface Props {
     children?: ReactElement | ReactElement[],
     className?: string,
     style?: CSSProperties,
+    onChange?: (args: OnChangeArgs) => void,
+    value?: number
 }
 
 //Interfaz de las propiedades del producto
@@ -54,4 +56,23 @@ export interface TitleProps {
     title?: string,
     className?: string,
     style?: CSSProperties,
+}
+
+//Interfaz de lista de productos, esta interfaz se extiend de los productos
+export interface ProductInCart extends Product {
+    count: number
+}
+
+//Interfaz de funcion onchange
+export interface OnChangeArgs {
+    product: Product,
+    count: number
+}
+
+
+//Interfaz de argumentos de onchange
+export interface UseProductArgs {
+    product: Product,
+    onChange?: (args: OnChangeArgs) => void,
+    value?: number
 }

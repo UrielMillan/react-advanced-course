@@ -1,2 +1,2 @@
-#Patron component extend styles
-Este patron es identi al component compound, sin embargo la unica diferencia es que con este podemos estender los estilos de los componentes
+#Patron Control pops
+Este patron tiene como base el styles extends, pero a diferencia de los otros dos este esta controloda por las propiedades de los objetos
