@@ -1,13 +1,21 @@
 import { ReactElement, CSSProperties } from "react";
+import { NumericLiteral } from "typescript";
 
 //interfaz de las propiedades de ProductCard
 export interface Props {
     product: Product,
-    children?: ReactElement | ReactElement[],
+    //children?: ReactElement | ReactElement[],
+    children?: ( args: ProductCartHandlers ) => JSX.Element,
     className?: string,
     style?: CSSProperties,
     onChange?: (args: OnChangeArgs) => void,
-    value?: number
+    value?: number,
+    initialValues?: InitialValues
+}
+
+export interface InitialValues{
+    maxCount?: number,
+    count?: number
 }
 
 //Interfaz de las propiedades del producto
@@ -27,7 +35,8 @@ export interface ProductButtons {
 export interface ProductContexProps {
     counter: number,
     increaseBy: (value: number) => void,
-    product: Product
+    product: Product,
+    maxCount?: number
 }
 
 //Propiedades de productCardHOC
@@ -74,5 +83,15 @@ export interface OnChangeArgs {
 export interface UseProductArgs {
     product: Product,
     onChange?: (args: OnChangeArgs) => void,
-    value?: number
+    value?: number,
+    initialValues?: InitialValues
+}
+
+export interface ProductCartHandlers {
+    count: number,
+    isMaxCountReached: boolean,
+    maxCount? : number,
+    product: Product,
+    increaseBy: (values: number) => void,
+    reset: () => void,
 }
