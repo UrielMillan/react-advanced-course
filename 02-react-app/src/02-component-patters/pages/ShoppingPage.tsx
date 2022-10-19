@@ -1,7 +1,6 @@
 import ProductCard, { ProductImage, ProductTitle, ProductButtons } from "../components";
 import { useShoppingCart } from "../hooks/useShoppingCart";
 import { product } from "../data/products";
-import '../styles/custom-styles.css'
 
 
 export default function ShoppingPage() {
@@ -14,7 +13,6 @@ export default function ShoppingPage() {
                 <ProductCard
                     product={product}
                     key={product.id}
-                    className="bg-dark"
                     onChange={onProductCountChange}
                     value={shoppingCart[product.id]?.count || 0}
                     initialValues={{
@@ -26,18 +24,12 @@ export default function ShoppingPage() {
                     {
                         ({reset, isMaxCountReached, increaseBy, count}) => (
                             <>
-                                <ProductImage className='custom-image' />
-                                <ProductTitle className='text-white' />
-                                <ProductButtons className="custom-buttons" />
-
-                                <button onClick={reset}>Reset</button>
-                                <button onClick={() => increaseBy(-2)}>-2</button>
-                                { !isMaxCountReached && <button onClick={() => increaseBy(2)}>+2</button>}
-                                <span>{count}</span>
+                                <ProductImage  />
+                                <ProductTitle  />
+                                <ProductButtons />
                             </>
                         )
                     }
-
 
                 </ProductCard>
             </div>
