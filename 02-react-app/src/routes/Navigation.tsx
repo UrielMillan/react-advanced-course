@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, NavLink, Route, Navigate } from "react-router-dom"
+import {FormikAbstraction,FormikBasicPages,FormikComponets,FormikYupPages} from "../03-forms/pages/";
+import RegisterPage from "../03-forms/pages/RegisterPage";
 import logo from '../logo.svg';
 
 export default function Navigation() {
@@ -9,24 +11,41 @@ export default function Navigation() {
         <BrowserRouter>
             <div className="main-layout">
                 <nav>
+                    <img src={logo} alt="React" />
                     <li>
-                        <NavLink to={'home'} className={({ isActive }) => isLinkActive(isActive)} >
-                            Home
+                        <NavLink to={'/register'} className={({ isActive }) => isLinkActive(isActive)} >
+                            Register
                         </NavLink>
-                        <NavLink to={'about'} className={({ isActive }) => isLinkActive(isActive)} >
-                            About
+                    </li>
+                    <li>
+                        <NavLink to={'/formik-basic'} className={({ isActive }) => isLinkActive(isActive)} >
+                            Formik Basic
                         </NavLink>
-                        <NavLink to={'user'} className={({ isActive }) => isLinkActive(isActive)} >
-                            Users
+                    </li>
+                    <li>
+                        <NavLink to={'/formik-yup'} className={({ isActive }) => isLinkActive(isActive)} >
+                            Formik Yup
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to={'/formik-components'} className={({ isActive }) => isLinkActive(isActive)} >
+                            Formik Componets
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to={'/formik-abstraction'} className={({ isActive }) => isLinkActive(isActive)} >
+                            Formik Abstractation
                         </NavLink>
                     </li>
                 </nav>
 
                 <Routes>
-                    <Route path="/home" element={<h1>Home</h1>} />
-                    <Route path="/about" element={<h1>About</h1>} />
-                    <Route path="/user" element={<h1>User</h1>} />
-                    <Route path="/*" element={<Navigate to="/home" replace />} />
+                    <Route path="/register" element={<RegisterPage/>} />
+                    <Route path="/formik-basic" element={<FormikBasicPages/>} />
+                    <Route path="/formik-yup" element={<FormikYupPages/>} />
+                    <Route path="/formik-components" element={<FormikComponets/>} />
+                    <Route path="/formik-abstraction" element={<FormikAbstraction/>} />
+                    <Route path="*" element={<Navigate to="/register" replace />} />
                 </Routes>
             </div>
         </BrowserRouter>
