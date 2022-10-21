@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, NavLink, Route, Navigate } from "react-router-dom"
 import {FormikAbstraction,FormikBasicPages,FormikComponets,FormikYupPages} from "../03-forms/pages/";
-import RegisterPage from "../03-forms/pages/RegisterPage";
+import DynamicForms from "../03-forms/pages/DynamicForms";
+import RegisterFormikpage from "../03-forms/pages/RegisterFormikPage";
 import logo from '../logo.svg';
 
 export default function Navigation() {
@@ -14,7 +15,7 @@ export default function Navigation() {
                     <img src={logo} alt="React" />
                     <li>
                         <NavLink to={'/register'} className={({ isActive }) => isLinkActive(isActive)} >
-                            Register
+                            Register formik page
                         </NavLink>
                     </li>
                     <li>
@@ -37,14 +38,20 @@ export default function Navigation() {
                             Formik Abstractation
                         </NavLink>
                     </li>
+                    <li>
+                        <NavLink to={'/dinamyc-form'} className={({ isActive }) => isLinkActive(isActive)} >
+                            Dynamic forms
+                        </NavLink>
+                    </li>
                 </nav>
 
                 <Routes>
-                    <Route path="/register" element={<RegisterPage/>} />
+                    <Route path="/register" element={<RegisterFormikpage/>} />
                     <Route path="/formik-basic" element={<FormikBasicPages/>} />
                     <Route path="/formik-yup" element={<FormikYupPages/>} />
                     <Route path="/formik-components" element={<FormikComponets/>} />
                     <Route path="/formik-abstraction" element={<FormikAbstraction/>} />
+                    <Route path="/dinamyc-form" element={<DynamicForms/>}/>
                     <Route path="*" element={<Navigate to="/register" replace />} />
                 </Routes>
             </div>
